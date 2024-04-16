@@ -11,6 +11,7 @@ if (!empty($tema)) {
     $pColor = $tema['warna_paragraph'];
     $fontSize = $tema['font_size'];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -26,22 +27,29 @@ if (!empty($tema)) {
 
     // Periksa apakah pengguna telah memilih tema baru
     if (isset($_POST['choose'])) {
-        // Ambil nilai tema yang dipilih dari combobox
-        $selectedTheme = $_POST['theme'];
+        if (isset($_POST['theme'])){
+            // Ambil nilai tema yang dipilih dari combobox
+            $selectedTheme = $_POST['theme'];
 
-        // Loop melalui tema yang tersimpan untuk menemukan tema yang dipilih
-        foreach ($tema as $t) {
-            if ($t['theme'] == $selectedTheme) {
-                // Jika tema yang dipilih ditemukan, perbarui variabel-variabel style
-                $bgColor = $t['warna_bg'];
-                $h1Color = $t['warna_h1'];
-                $alignment = $t['alignment'];
-                $pColor = $t['warna_paragraph'];
-                $fontSize = $t['font_size'];
-                break; // Hentikan loop karena tema sudah ditemukan
+            // Loop melalui tema yang tersimpan untuk menemukan tema yang dipilih
+            foreach ($tema as $t) {
+                if ($t['theme'] == $selectedTheme) {
+                    // Jika tema yang dipilih ditemukan, perbarui variabel-variabel style
+                    $bgColor = $t['warna_bg'];
+                    $h1Color = $t['warna_h1'];
+                    $alignment = $t['alignment'];
+                    $pColor = $t['warna_paragraph'];
+                    $fontSize = $t['font_size'];
+                    break; // Hentikan loop karena tema sudah ditemukan
+                }
             }
+        } 
+        else {
+            echo "<p style = 'color: red;'>Anda harus memilih tema terlebih dahulu</p>";
         }
     }
+
+    
     ?>
 
     <style>
@@ -72,8 +80,8 @@ if (isset($_POST['choose'])) {
     echo "<body class=\"bgColor fontSize\">
 
     <header>
-
-        <form method=\"post\" >
+        
+        <form method=\"post\">
             <p>
                 Theme :
                 <select name=\"theme\" id=\"theme\">
@@ -90,10 +98,10 @@ if (isset($_POST['choose'])) {
                 <input type=\"submit\" name=\"edit\" value=\"Edit the Theme\"></input>
             </p>
         </form>
-
+    <hr>
     </header>
 
-    <h1 class=\"h1Color\">Heading 1</h1>
+    <h1 class=\"h1Color alignment\">Heading 1</h1>
     <p class=\"pColor\">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat repudiandae optio deserunt architecto
         saepe ad
@@ -116,6 +124,7 @@ if (isset($_POST['choose'])) {
     </p>
 
     </body>";
+    
 } else {
     echo "<body>
 
