@@ -69,7 +69,7 @@ if (!empty($tema)) {
 
 <?php
 if (isset($_POST['choose'])) {
-    echo "<body class=\"bgColor\">
+    echo "<body class=\"bgColor fontSize\">
 
     <header>
 
