@@ -46,15 +46,16 @@
 
     </form>
     <?php
+    // ...
     if (isset($_POST['kirim'])) {
         $theme = $_POST["theme"];
         $warna_bg = $_POST["warna-bg"];
         $warna_h1 = $_POST["warna-h1"];
-        $alignment = $_POST["warna-h1"];
+        $alignment = $_POST["alignment"];
         $warna_paragraph = $_POST["warna-p"];
         $font_size = $_POST["font-sz"];
 
-        // Membuat objek theme
+        // Membuat objek tema baru
         $tema_baru = array(
             'theme' => $theme,
             'warna_bg' => $warna_bg,
@@ -64,23 +65,20 @@
             'font_size' => $font_size
         );
 
-        // Mengecek apakah cookie 'tema' sudah ada
+        // Menyimpan tema baru ke dalam cookie 'tema'
         if (isset($_COOKIE['tema'])) {
-            // Mendapatkan nilai cookie 'tema' dan mengubahnya menjadi array
             $tema_sebelumnya = json_decode($_COOKIE['tema'], true);
-
-            // Menambahkan objek tema baru ke dalam array tema sebelumnya
             $tema_sebelumnya[] = $tema_baru;
-
-            // Mengubah array tema menjadi string JSON dan menyimpannya kembali dalam cookie 'tema'
             setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
         } else {
-            // Jika cookie 'tema' belum ada, maka buat array baru dengan tema baru
             $tema_sebelumnya = array($tema_baru);
             setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
         }
     }
     ?>
+
+
+
 </body>
 
 </html>
