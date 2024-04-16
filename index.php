@@ -125,6 +125,55 @@ if (isset($_POST['choose'])) {
 
     </body>";
     
+} else if (isset($_POST['edit'])) {
+    echo "<body class=\"bgColor fontSize\">
+
+    <header>
+        
+        <form action = \"edit.php\" method=\"post\">
+            <p>
+                Theme :
+                <select name=\"theme\" id=\"theme\">
+                    <option disabled selected>-- Choose Theme --</option>";
+    foreach ($tema as $t) {
+        echo '<option value="' . $t['theme'] . '">' . $t['theme'] . '</option>';
+    }
+    echo "
+                </select>
+                <a href=\"tambah.php\" target = \"blank\">Add New Theme</a>
+            </p>
+            <p>
+                <input type=\"submit\" name=\"choose\" value=\"Choose the Theme\"></input>
+                <input type=\"submit\" name=\"edit\" value=\"Edit the Theme\"></input>
+            </p>
+        </form>
+    <hr>
+    </header>
+
+    <h1 class=\"h1Color alignment\">Heading 1</h1>
+    <p class=\"pColor\">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat repudiandae optio deserunt architecto
+        saepe ad
+        fugiat dolorem fuga aliquid repellendus recusandae quas sit sunt molestiae cum, explicabo mollitia est odit.
+        Esse sunt a maxime tempora. Officiis saepe quae explicabo ut enim possimus perferendis, impedit, optio
+        repudiandae esse, tenetur deleniti aspernatur ratione. Placeat veritatis dolores cumque ullam fugit
+        voluptatibus
+        architecto blanditiis iste corrupti cupiditate. Vero aut autem ad assumenda recusandae eligendi animi minus
+        fugit deleniti consequuntur quidem, beatae molestiae similique ratione corrupti pariatur id sunt! Ipsum nisi
+        blanditiis earum in hic laudantium dicta aut vel, ullam obcaecati commodi, animi eaque corporis.
+    </p>
+    <p class=\"pColor\">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ipsa nemo aliquam ullam incidunt,
+        voluptatibus,
+        quisquam hic tempore illum adipisci saepe modi optio explicabo culpa mollitia dignissimos maxime
+        exercitationem
+        molestiae voluptas esse perferendis aut unde! Rerum, aliquam nam fuga, dolorum quia explicabo a laudantium
+        culpa
+        porro ducimus quos, expedita incidunt? Adipisci animi ab explicabo consequuntur rem fugiat totam eum magni.
+    </p>
+
+    </body>";
+    
 } else {
     echo "<body>
 
