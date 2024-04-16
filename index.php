@@ -5,45 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Weprog</title>
+    <?php
+    // Mengecek apakah cookie 'tema' telah ada
+    if (isset($_COOKIE['tema'])) {
+        // Mendapatkan nilai cookie 'tema' dan mengubahnya menjadi array
+        $tema = json_decode($_COOKIE['tema'], true);
+    }
+    ?>
 </head>
 
 <body>
 
-    <?php
-    if (isset($_POST['kirim'])) {
-        /*  $theme = $_POST['theme'];
-        $warna_bg = $_POST['warna-bg'];
-        $warna_h1 = $_POST['warna-h1'];
-        $alignment = $_POST['alignment'];
-        $warna_p = $_POST['warna-p'];
-        $font_sz = $_POST['font-sz']; */
-        $data = $_POST['data'];
-        foreach ($data as $item) {
-            echo $item . "<br>";
-        }
-    }
-    echo "<br>";
-    $nested_arr = array($data[0] => $data);
-    // array_push($nested_arr, $data);
-    print_r($nested_arr);
-
-    /*  echo "
-<p>Tema = $theme </p>
-<p>Warna BG = $warna_bg </p>
-<p>Warna H1 = $warna_h1 </p>
-<p>Alignment = $alignment </p>
-<p>Warna P = $warna_p </p>
-<p>Font SZ = $font_sz</p>
-";
-    $arr_test = array($theme, $warna_bg, $warna_h1, $alignment, $warna_p, $font_sz);
-    print_r($arr_test);
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    $nested_arr = array($theme => $arr_test);
-    print_r($nested_arr);
- */
-    ?>
     <header>
 
         <form method="post">
@@ -51,9 +23,15 @@
                 Theme :
                 <select name="theme" id="theme">
                     <option value="" disabled selected>-- Choose Theme --</option>
-                    <!-- <option value="male">Laki-laki</option> -->
+                    <?php
+                    if (!empty($tema)) {
+                        foreach ($tema as $t) {
+                            echo '<option value="' . $t['theme'] . '">' . $t['theme'] . '</option>';
+                        }
+                    }
+                    ?>
                 </select>
-                <a href="tambah.php">Add New Theme</a>
+                <a href="tambah.php" target="blank">Add New Theme</a>
             </p>
             <p>
                 <input type="submit" name="choose" value="Choose the Theme"></input>
@@ -84,6 +62,8 @@
         culpa
         porro ducimus quos, expedita incidunt? Adipisci animi ab explicabo consequuntur rem fugiat totam eum magni.
     </p>
+
+
 </body>
 
 </html>
