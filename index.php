@@ -11,7 +11,6 @@ if (!empty($tema)) {
     $pColor = $tema['warna_paragraph'];
     $fontSize = $tema['font_size'];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -45,25 +44,25 @@ if (!empty($tema)) {
     ?>
 
     <style>
-    .bgColor {
-        background-color: <?=$bgColor ?>;
-    }
+        .bgColor {
+            background-color: <?= $bgColor ?>;
+        }
 
-    .h1Color {
-        color: <?=$h1Color ?>;
-    }
+        .h1Color {
+            color: <?= $h1Color ?>;
+        }
 
-    .alignment {
-        text-align: <?=$alignment ?>;
-    }
+        .alignment {
+            text-align: <?= $alignment ?>;
+        }
 
-    .pColor {
-        color: <?=$pColor ?>;
-    }
+        .pColor {
+            color: <?= $pColor ?>;
+        }
 
-    .fontSize {
-        font-size: <?=$fontSize ?>px;
-    }
+        .fontSize {
+            font-size: <?= $fontSize ?>px;
+        }
     </style>
 </head>
 
@@ -96,6 +95,9 @@ if (!empty($tema)) {
     </header>
     <?php
     if (isset($_POST['edit'])) {
+        // Redirect ke halaman edit.php dengan mengirimkan data tema yang dipilih
+        header("Location: edit.php?theme=" . $_POST['theme']);
+        exit(); // Pastikan untuk keluar dari skrip setelah redirect
     }
     ?>
 
