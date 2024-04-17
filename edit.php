@@ -55,10 +55,22 @@ if (!empty($tema)) {
         <p>
             Alignment of Heading 1 :
             <select name="alignment" id="alignment">
-                <option selected>-- Choose The Alignment --</option>
-                <option value="left">Left</option>
-                <option value="center">Center</option>
-                <option value="right">Right</option>
+                <?php if ($alignment == "left") {
+                    echo "<option disabled>-- Choose The Alignment --</option>
+                    <option selected value=\"left\">Left</option>
+                    <option value=\"center\">Center</option>
+                    <option value=\"right\">Right</option>";
+                }else if ($alignment == "center"){
+                    echo "<option disabled>-- Choose The Alignment --</option>
+                    <option value=\"left\">Left</option>
+                    <option selected value=\"center\">Center</option>
+                    <option value=\"right\">Right</option>";
+                }else {
+                    echo "<option disabled>-- Choose The Alignment --</option>
+                    <option value=\"left\">Left</option>
+                    <option value=\"center\">Center</option>
+                    <option selected value=\"right\">Right</option>";
+                }?>
             </select>
         </p>
         <p>
