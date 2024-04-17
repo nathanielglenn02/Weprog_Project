@@ -74,6 +74,7 @@ if (!empty($tema)) {
                     <option selected value=\"right\">Right</option>";
                 }?>
             </select>
+
         </p>
         <p>
             Color of Paragraph :
@@ -88,7 +89,6 @@ if (!empty($tema)) {
 
         </p>
 
-         
     </form>
 
 </html>
