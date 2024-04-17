@@ -1,6 +1,4 @@
 <?php
-// Inisialisasi variabel $tema sebagai array kosong
-$tema = array();
 
 // Pastikan $tema tidak kosong sebelum mengakses elemen-elemennya
 if (!empty($tema)) {
@@ -22,12 +20,14 @@ if (!empty($tema)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Weprog</title>
     <?php
+    // Inisialisasi variabel $tema sebagai array kosong
+    $tema = array();
     // Ambil data tema dari cookie jika ada
-    $tema = json_decode($_COOKIE['tema'], true) ?? array();
+    $tema = isset($_COOKIE['tema']) ? json_decode($_COOKIE['tema'], true) : array();
 
     // Periksa apakah pengguna telah memilih tema baru
     if (isset($_POST['choose'])) {
-        if (isset($_POST['theme'])){
+        if (isset($_POST['theme'])) {
             // Ambil nilai tema yang dipilih dari combobox
             $selectedTheme = $_POST['theme'];
 
@@ -43,13 +43,12 @@ if (!empty($tema)) {
                     break; // Hentikan loop karena tema sudah ditemukan
                 }
             }
-        } 
-        else {
+        } else {
             echo "<p style = 'color: red;'>Anda harus memilih tema terlebih dahulu</p>";
         }
     }
 
-    
+
     ?>
 
     <style>
@@ -79,7 +78,7 @@ if (!empty($tema)) {
 if (isset($_POST['choose'])) {
     echo "<body class=\"bgColor fontSize\">
 
-    <header>
+    <div>
         
         <form method=\"post\">
             <p>
@@ -98,8 +97,8 @@ if (isset($_POST['choose'])) {
                 <input type=\"submit\" name=\"edit\" value=\"Edit the Theme\"></input>
             </p>
         </form>
-    <hr>
-    </header>
+    </div>
+<hr>
 
     <h1 class=\"h1Color alignment\">Heading 1</h1>
     <p class=\"pColor\">
@@ -124,11 +123,10 @@ if (isset($_POST['choose'])) {
     </p>
 
     </body>";
-    
 } else if (isset($_POST['edit'])) {
     echo "<body class=\"bgColor fontSize\">
 
-    <header>
+    <div>
         
         <form action = \"edit.php\" method=\"post\">
             <p>
@@ -147,9 +145,8 @@ if (isset($_POST['choose'])) {
                 <input type=\"submit\" name=\"edit\" value=\"Edit the Theme\"></input>
             </p>
         </form>
-    <hr>
-    </header>
-
+    <div>
+<hr>
     <h1 class=\"h1Color alignment\">Heading 1</h1>
     <p class=\"pColor\">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat repudiandae optio deserunt architecto
@@ -173,7 +170,6 @@ if (isset($_POST['choose'])) {
     </p>
 
     </body>";
-    
 } else {
     echo "<body>
 
