@@ -40,7 +40,7 @@ if (!empty($tema)) {
 </head>
 
 <body>
-    <form action="tambah.php" method="post">
+    <form action="" method="post">
         <p>
         <p>
             Theme :
@@ -85,11 +85,67 @@ if (!empty($tema)) {
             <input type="number" min="10" max="24" id="font-sz" name="font-sz" value=<?= $fontSize ?>>
 
         </p>
-        <button type="submit" name="kirim">Save</button>
+        <button type="submit" name="edit">Save</button>
 
         </p>
 
     </form>
+    <?php
+    if (isset($_POST['edit'])) {
+        function searchForId($id, $array) {
+            foreach ($array as $key => $val) {
+                if ($val['theme'] === $id) {
+                    return $key;
+                }
+            }
+            return null;
+        }
+        $theme = $_POST["theme"];
+        $warna_bg = $_POST["warna-bg"];
+        $warna_h1 = $_POST["warna-h1"];
+        $alignment = $_POST["alignment"];
+        $warna_paragraph = $_POST["warna-p"];
+        $font_size = $_POST["font-sz"];
+        // foreach ($tema as $t) {
+        //     if ($t['theme'] == $selectedTheme) {
+        //         // Jika tema yang dipilih ditemukan, perbarui variabel-variabel style
+        //         $t['theme'] = $theme
+        //         $t['warna_bg'] = $warna_bg;
+        //         $t['warna_h1'] = $warna_h1;
+        //         $t['alignment'] = $alignment;
+        //         $t['warna_paragraph'] = $warna_paragraph;
+        //         $t['font_size'] = $font_size;
+        //         break; // Hentikan loop karena tema sudah ditemukan
+        //     }
+        // }
+
+        // Membuat objek tema baru
+        $tema_baru = array(
+            'theme' => $theme,
+            'warna_bg' => $warna_bg,
+            'warna_h1' => $warna_h1,
+            'alignment' => $alignment,
+            'warna_paragraph' => $warna_paragraph,
+            'font_size' => $font_size
+        );
+
+        //Menyimpan tema baru ke dalam cookie 'tema'
+        if (isset($_COOKIE['tema'])) {
+            $selectedTheme = $_GET['theme'];
+            $tema_sebelumnya = json_decode($_COOKIE['tema'], true);
+            
+            $arr_index = searchForId($selectedTheme, $tema_sebelumnya);
+            $tema_sebelumnya[$arr_index] = $tema_baru;
+            var_dump($tema_sebelumnya);
+            setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
+            header("Location: edit.php?theme=" . $_POST['theme']);
+            exit(); // Pastikan untuk keluar dari skrip setelah redirect
+        } else {
+            $tema_sebelumnya = array($tema_baru);
+            setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
+        }
+    }
+    ?>
 </body>
 
 </html>
