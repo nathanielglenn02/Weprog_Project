@@ -44,25 +44,25 @@ if (!empty($tema)) {
     ?>
 
     <style>
-        .bgColor {
-            background-color: <?= $bgColor ?>;
-        }
+    .bgColor {
+        background-color: <?=$bgColor ?>;
+    }
 
-        .h1Color {
-            color: <?= $h1Color ?>;
-        }
+    .h1Color {
+        color: <?=$h1Color ?>;
+    }
 
-        .alignment {
-            text-align: <?= $alignment ?>;
-        }
+    .alignment {
+        text-align: <?=$alignment ?>;
+    }
 
-        .pColor {
-            color: <?= $pColor ?>;
-        }
+    .pColor {
+        color: <?=$pColor ?>;
+    }
 
-        .fontSize {
-            font-size: <?= $fontSize ?>px;
-        }
+    .fontSize {
+        font-size: <?=$fontSize ?>px;
+    }
     </style>
 </head>
 
@@ -96,6 +96,16 @@ if (!empty($tema)) {
     <?php
     if (isset($_POST['edit'])) {
         // Redirect ke halaman edit.php dengan mengirimkan data tema yang dipilih
+        foreach ($tema as $t) {
+            if ($t['theme'] == $selectedTheme) {
+                $theme = $_POST["theme"];
+                $warna_bg = $_POST["warna-bg"];
+                $warna_h1 = $_POST["warna-h1"];
+                $alignment = $_POST["alignment"];
+                $warna_paragraph = $_POST["warna-p"];
+                $font_size = $_POST["font-sz"];
+            }
+        }
         header("Location: edit.php?theme=" . $_POST['theme']);
         exit(); // Pastikan untuk keluar dari skrip setelah redirect
     }
