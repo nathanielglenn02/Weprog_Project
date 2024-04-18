@@ -44,25 +44,25 @@ if (!empty($tema)) {
     ?>
 
     <style>
-        .bgColor {
-            background-color: <?= $bgColor ?>;
-        }
+    .bgColor {
+        background-color: <?=$bgColor ?>;
+    }
 
-        .h1Color {
-            color: <?= $h1Color ?>;
-        }
+    .h1Color {
+        color: <?=$h1Color ?>;
+    }
 
-        .alignment {
-            text-align: <?= $alignment ?>;
-        }
+    .alignment {
+        text-align: <?=$alignment ?>;
+    }
 
-        .pColor {
-            color: <?= $pColor ?>;
-        }
+    .pColor {
+        color: <?=$pColor ?>;
+    }
 
-        .fontSize {
-            font-size: <?= $fontSize ?>px;
-        }
+    .fontSize {
+        font-size: <?=$fontSize ?>px;
+    }
     </style>
 </head>
 
@@ -84,7 +84,7 @@ if (!empty($tema)) {
                     } ?>
 
                 </select>
-                <a href="tambah.php" target="blank">Add New Theme</a>
+                <a href="tambah.php">Add New Theme</a>
             </p>
             <p>
                 <input type="submit" name="choose" value="Choose the Theme"></input>
@@ -135,4 +135,4 @@ if (!empty($tema)) {
 
 </body>
 
-</html>html
+</html>

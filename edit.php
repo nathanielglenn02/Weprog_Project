@@ -23,7 +23,7 @@ if (!empty($tema)) {
     <title>Document</title>
     <?php
     $tema = json_decode($_COOKIE['tema'], true) ?? array();
-    $selectedTheme = $_POST['theme'];
+    $selectedTheme = $_GET['theme'];
 
     foreach ($tema as $t) {
         if ($t['theme'] == $selectedTheme) {
@@ -44,15 +44,15 @@ if (!empty($tema)) {
         <p>
         <p>
             Theme :
-            <input type="text" id="theme" name="theme" value=<?=$selectedTheme?>>
+            <input type="text" id="theme" name="theme" value=<?= $selectedTheme ?>>
         </p>
         <p>
             Color of Page Backgorund :
-            <input type="color" id="warna-bg" name="warna-bg" value=<?=$bgColor?>>
+            <input type="color" id="warna-bg" name="warna-bg" value=<?= $bgColor ?>>
         </p>
         <p>
             Color of Heading 1 :
-            <input type="color" id="warna-h1" name="warna-h1" value=<?=$h1Color?>>
+            <input type="color" id="warna-h1" name="warna-h1" value=<?= $h1Color ?>>
         </p>
         <p>
             Alignment of Heading 1 :
@@ -62,27 +62,27 @@ if (!empty($tema)) {
                     <option selected value=\"left\">Left</option>
                     <option value=\"center\">Center</option>
                     <option value=\"right\">Right</option>";
-                }else if ($alignment == "center"){
+                } else if ($alignment == "center") {
                     echo "<option disabled>-- Choose The Alignment --</option>
                     <option value=\"left\">Left</option>
                     <option selected value=\"center\">Center</option>
                     <option value=\"right\">Right</option>";
-                }else {
+                } else {
                     echo "<option disabled>-- Choose The Alignment --</option>
                     <option value=\"left\">Left</option>
                     <option value=\"center\">Center</option>
                     <option selected value=\"right\">Right</option>";
-                }?>
+                } ?>
             </select>
 
         </p>
         <p>
             Color of Paragraph :
-            <input type="color" id="warna-p" name="warna-p" value=<?=$pColor?>>
+            <input type="color" id="warna-p" name="warna-p" value=<?= $pColor ?>>
         </p>
         <p>
             Font Size of Paragraph :
-            <input type="number" min="10" max="24" id="font-sz" name="font-sz" value=<?=$fontSize?>>
+            <input type="number" min="10" max="24" id="font-sz" name="font-sz" value=<?= $fontSize ?>>
 
         </p>
         <button type="submit" name="kirim">Save</button>
