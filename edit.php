@@ -136,7 +136,6 @@ if (!empty($tema)) {
             
             $arr_index = searchForId($selectedTheme, $tema_sebelumnya);
             $tema_sebelumnya[$arr_index] = $tema_baru;
-            var_dump($tema_sebelumnya);
             setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
             header("Location: edit.php?theme=" . $_POST['theme']);
             exit(); // Pastikan untuk keluar dari skrip setelah redirect
