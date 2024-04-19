@@ -66,7 +66,7 @@ if (!empty($tema)) {
     </style>
 </head>
 
-<body class="bgColor fontSize">
+<body class="bgColor">
 
     <header>
 
@@ -112,7 +112,7 @@ if (!empty($tema)) {
     ?>
 
     <h1 class="h1Color alignment">Heading 1</h1>
-    <p class="pColor">
+    <p class="pColor fontSize">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat repudiandae optio deserunt architecto
         saepe ad
         fugiat dolorem fuga aliquid repellendus recusandae quas sit sunt molestiae cum, explicabo mollitia est odit.
@@ -123,7 +123,7 @@ if (!empty($tema)) {
         fugit deleniti consequuntur quidem, beatae molestiae similique ratione corrupti pariatur id sunt! Ipsum nisi
         blanditiis earum in hic laudantium dicta aut vel, ullam obcaecati commodi, animi eaque corporis.
     </p>
-    <p class="pColor">
+    <p class="pColor fontSize">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ipsa nemo aliquam ullam incidunt,
         voluptatibus,
         quisquam hic tempore illum adipisci saepe modi optio explicabo culpa mollitia dignissimos maxime
