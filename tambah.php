@@ -45,40 +45,38 @@
         </p>
 
     </form>
+    <?php
+    // ...
+    if (isset($_POST['kirim'])) {
+        $theme = $_POST["theme"];
+        $warna_bg = $_POST["warna-bg"];
+        $warna_h1 = $_POST["warna-h1"];
+        $alignment = $_POST["alignment"];
+        $warna_paragraph = $_POST["warna-p"];
+        $font_size = $_POST["font-sz"];
 
+        // Membuat objek tema baru
+        $tema_baru = array(
+            'theme' => $theme,
+            'warna_bg' => $warna_bg,
+            'warna_h1' => $warna_h1,
+            'alignment' => $alignment,
+            'warna_paragraph' => $warna_paragraph,
+            'font_size' => $font_size
+        );
+
+        //Menyimpan tema baru ke dalam cookie 'tema'
+        if (isset($_COOKIE['tema'])) {
+
+            $tema_sebelumnya = json_decode($_COOKIE['tema'], true);
+            $tema_sebelumnya[] = $tema_baru;
+            setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
+        } else {
+            $tema_sebelumnya = array($tema_baru);
+            setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
+        }
+    }
+    ?>
 </body>
 
 </html>
-
-<?php
-// ...
-if (isset($_POST['kirim'])) {
-    $theme = $_POST["theme"];
-    $warna_bg = $_POST["warna-bg"];
-    $warna_h1 = $_POST["warna-h1"];
-    $alignment = $_POST["alignment"];
-    $warna_paragraph = $_POST["warna-p"];
-    $font_size = $_POST["font-sz"];
-
-    // Membuat objek tema baru
-    $tema_baru = array(
-        'theme' => $theme,
-        'warna_bg' => $warna_bg,
-        'warna_h1' => $warna_h1,
-        'alignment' => $alignment,
-        'warna_paragraph' => $warna_paragraph,
-        'font_size' => $font_size
-    );
-
-    //Menyimpan tema baru ke dalam cookie 'tema'
-    if (isset($_COOKIE['tema'])) {
-
-        $tema_sebelumnya = json_decode($_COOKIE['tema'], true);
-        $tema_sebelumnya[] = $tema_baru;
-        setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
-    } else {
-        $tema_sebelumnya = array($tema_baru);
-        setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
-    }
-}
-?>
