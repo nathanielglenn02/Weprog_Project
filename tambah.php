@@ -65,8 +65,9 @@
             'font_size' => $font_size
         );
 
-        // Menyimpan tema baru ke dalam cookie 'tema'
+        //Menyimpan tema baru ke dalam cookie 'tema'
         if (isset($_COOKIE['tema'])) {
+
             $tema_sebelumnya = json_decode($_COOKIE['tema'], true);
             $tema_sebelumnya[] = $tema_baru;
             setcookie("tema", json_encode($tema_sebelumnya), time() + 6000);
